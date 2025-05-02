@@ -1,0 +1,36 @@
+.cards {
+  padding: 16px;
+  position: relative;
+}
+
+.cards__image {
+  width: 328px;
+  height: 328px;
+  top: 279px;
+  left: 38px;
+  border-radius: 12px;
+}
+
+.cards__list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.cards__title {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  background-color: #ffffff;
+  color: #00000099;
+  padding: 2px 12px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+}

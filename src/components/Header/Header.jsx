@@ -2,12 +2,18 @@ import "./Header.css";
 import headerLogo from "../../assets/Logo.svg";
 import userAvatar from "../../assets/Avatar.svg";
 
-export default function Header() {
+export default function Header({ handleAddClick }) {
   return (
     <header className="header">
       <img src={headerLogo} alt="wtwr logo" className="header__logo" />
       <p className="header__date-location">DATE, LOCATION</p>
-      <button className="header__add-btn">+ Add clothes</button>
+      <button
+        onClick={handleAddClick}
+        type="button"
+        className="header__add-btn"
+      >
+        + Add clothes
+      </button>
       <div className="header__user-container">
         <p className="header__username">Terrence Tegegne</p>
         <img

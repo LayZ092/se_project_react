@@ -2,9 +2,9 @@ import "./ItemCard.css";
 
 export default function ItemCard({ item }) {
   return (
-    <ul className="cards">
+    <li className="cards">
       <h2 className="cards__title">{item.name}</h2>
       <img src={item.link} alt={item.name} className="cards__image" />
-    </ul>
+    </li>
   );
 }

@@ -8,7 +8,7 @@ export default function Main({ weatherData }) {
   return (
     <main className="main">
       <WeatherCard />
-      <section className="cards">
+      <section>
         <p className="weather-card__info">
           Today is 75 &deg; F / You may want to wear:
         </p>

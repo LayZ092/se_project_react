@@ -1,12 +1,14 @@
 .cards {
   padding: 16px;
   position: relative;
-  width: 328px;
   list-style: none;
 }
 
 .cards__image {
-  width: 100%;
+  width: 283px;
+  height: 328px;
+  top: 279px;
+  left: 38px;
   border-radius: 12px;
 }
 
@@ -15,13 +17,13 @@
   flex-direction: row;
   flex-wrap: wrap;
   gap: 20px;
-  justify-content: center;
+  justify-content: flex-start;
   padding: 20px;
 }
 
 .cards__title {
   position: absolute;
-  top: 15px;
+  top: 20px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1;

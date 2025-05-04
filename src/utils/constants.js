@@ -36,3 +36,10 @@ export const defaultClothingItems = [
     link: "https://i.pinimg.com/736x/d2/61/36/d26136fcd3240e8e0b40e03b6d525c36.jpg",
   },
 ];
+
+export const locationData = {
+  latitude: 40.7128,
+  longitude: -74.006,
+};
+
+export const APIkey = "d22a0a1f18e45cc2b3f69f90e9685df9";

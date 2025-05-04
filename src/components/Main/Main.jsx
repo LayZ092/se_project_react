@@ -7,16 +7,17 @@ import ItemCard from "../ItemCard/ItemCard";
 export default function Main({ weatherData, handleCardClick }) {
   return (
     <main className="main">
-      <WeatherCard />
+      <WeatherCard weatherData={weatherData} />
       <section>
         <p className="weather-card__info">
-          Today is 75 &deg; F / You may want to wear:
+          Today is {weatherData.type} {weatherData.temp.F} &deg; F / You may
+          want to wear:
         </p>
         <ul className="cards__list">
           {defaultClothingItems
-            // .filter((item) => {
-            //   return item.weather === weatherData.type;
-            // })
+            .filter((item) => {
+              return item.weather === weatherData.type;
+            })
             .map((item) => {
               return (
                 <ItemCard

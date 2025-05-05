@@ -1,3 +1,82 @@
+export const weatherOptions = [
+  {
+    day: true,
+    condition: "clear",
+    url: new URL("../assets/day/clear.svg", import.meta.url).href,
+  },
+  {
+    day: true,
+    condition: "cloudy",
+    url: new URL("../assets/day/cloudy.svg", import.meta.url).href,
+  },
+  {
+    day: true,
+    condition: "fog",
+    url: new URL("../assets/day/fog.svg", import.meta.url).href,
+  },
+  {
+    day: true,
+    condition: "rain",
+    url: new URL("../assets/day/rain.svg", import.meta.url).href,
+  },
+  {
+    day: true,
+    condition: "snow",
+    url: new URL("../assets/day/snow.svg", import.meta.url).href,
+  },
+  {
+    day: true,
+    condition: "thunderstorm",
+    url: new URL("../assets/day/thunderstorm.svg", import.meta.url).href,
+  },
+  {
+    day: false,
+    condition: "clear",
+    url: new URL("../assets/night/clear.svg", import.meta.url).href,
+  },
+  {
+    day: false,
+    condition: "cloudy",
+    url: new URL("../assets/night/cloudy.svg", import.meta.url).href,
+  },
+  {
+    day: false,
+    condition: "fog",
+    url: new URL("../assets/night/fog.svg", import.meta.url).href,
+  },
+  {
+    day: false,
+    condition: "rain",
+    url: new URL("../assets/night/rain.svg", import.meta.url).href,
+  },
+  {
+    day: false,
+    condition: "snow",
+    url: new URL("../assets/night/snow.svg", import.meta.url).href,
+  },
+  {
+    day: false,
+    condition: "thunderstorm",
+    url: new URL("../assets/night/thunderstorm.svg", import.meta.url).href,
+  },
+];
+
+export const weatherConditionMapping = {
+  clear: "clear", // Maps to "clear sky"
+  clouds: "cloudy", // Maps to "few clouds", "scattered clouds", "broken clouds"
+  "few clouds": "cloudy", // Explicit mapping for "few clouds"
+  "scattered clouds": "cloudy", // Explicit mapping for "scattered clouds"
+  "broken clouds": "cloudy", // Explicit mapping for "broken clouds"
+  mist: "fog", // Maps to "mist"
+  haze: "fog",
+  fog: "fog",
+  rain: "rain", // Maps to "rain"
+  "shower rain": "rain", // Explicit mapping for "shower rain"
+  drizzle: "rain",
+  snow: "snow", // Maps to "snow"
+  thunderstorm: "thunderstorm", // Maps to "thunderstorm"
+};
+
 export const defaultClothingItems = [
   {
     _id: 0,
@@ -38,8 +117,8 @@ export const defaultClothingItems = [
 ];
 
 export const locationData = {
-  latitude: 40.7128,
-  longitude: -74.006,
+  latitude: 29.7499,
+  longitude: -95.3584,
 };
 
 export const APIkey = "d22a0a1f18e45cc2b3f69f90e9685df9";

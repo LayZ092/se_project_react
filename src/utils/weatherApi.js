@@ -1,3 +1,5 @@
+import { weatherConditionMapping } from "./constants";
+
 export const getWeather = ({ latitude, longitude }, APIkey) => {
   return fetch(
     `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${APIkey}`
@@ -15,8 +17,22 @@ export const filterWeatherData = (data) => {
   result.city = data.name;
   result.temp = { F: data.main.temp };
   result.type = getWeatherType(result.temp.F);
+  result.condition = data.weather[0].main.toLowerCase();
+  result.condition =
+    weatherConditionMapping[result.condition] || result.condition;
+  result.isDay = isDay(data.sys, Date.now());
 
   return result;
+};
+
+const isDay = ({ sunrise, sunset }, now) => {
+  console.log({
+    sunrise: new Date(sunrise * 1000),
+    sunset: new Date(sunset * 1000),
+    currentTime: new Date(now),
+    isDay: sunrise * 1000 < now && now < sunset * 1000,
+  });
+  return sunrise * 1000 < now && now < sunset * 1000;
 };
 
 const getWeatherType = (temperature) => {

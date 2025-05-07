@@ -1,4 +1,4 @@
-.cards {
+.card {
   padding: 16px;
   position: relative;
   list-style: none;
@@ -21,7 +21,7 @@
   padding: 20px;
 }
 
-.cards__title {
+.card__title {
   position: absolute;
   top: 20px;
   left: 50%;

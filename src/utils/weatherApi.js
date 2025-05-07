@@ -26,12 +26,6 @@ export const filterWeatherData = (data) => {
 };
 
 const isDay = ({ sunrise, sunset }, now) => {
-  console.log({
-    sunrise: new Date(sunrise * 1000),
-    sunset: new Date(sunset * 1000),
-    currentTime: new Date(now),
-    isDay: sunrise * 1000 < now && now < sunset * 1000,
-  });
   return sunrise * 1000 < now && now < sunset * 1000;
 };
 

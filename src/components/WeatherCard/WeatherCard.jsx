@@ -9,9 +9,6 @@ export default function WeatherCard({ weatherData }) {
     );
   });
 
-  console.log("Weather Data:", weatherData);
-  console.log("Filtered Options:", filteredOptions);
-
   const weatherOptionUrl = filteredOptions[0]?.url || weatherOptions[0].url;
   const weatherOptionCondition =
     filteredOptions[0]?.condition || weatherOptions[0].condition;

@@ -28,23 +28,27 @@
   font-size: 14px;
   font-weight: 700;
   line-height: 100%;
-  color: #ffffff;
+  color: #00000080;
+  opacity: 50%;
 }
 
 .toggle-switch__text_F {
   position: absolute;
   top: 6px;
   right: 39px;
-  color: #ffffff;
 }
 
 .toggle-switch__text_C {
   position: absolute;
   top: 6px;
   right: 9px;
-  color: #ffffff;
 }
 
 .toggle-switch__checkbox:checked ~ .toggle-switch__slider {
   transform: translateX(28px);
+}
+
+.toggle-switch__text_color_white {
+  color: white;
+  opacity: 100%;
 }

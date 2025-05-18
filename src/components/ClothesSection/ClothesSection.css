@@ -1,0 +1,8 @@
+.clothes-section__controls {
+  display: flex;
+}
+
+.clothes-section__cards-list {
+  width: 1015px;
+  height: 676px;
+}

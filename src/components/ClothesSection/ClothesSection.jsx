@@ -7,7 +7,10 @@ export default function ClothesSection() {
     <div className="clothes-section">
       <div className="clothes-section__controls">
         <p className="clothes-section__title">Your items</p>
-        <button type="button" className="header__add-btn">
+        <button
+          type="button"
+          className="header__add-btn clothes-section__add-btn"
+        >
           + Add new
         </button>
       </div>

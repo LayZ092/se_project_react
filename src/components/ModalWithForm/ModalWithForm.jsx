@@ -8,13 +8,6 @@ export default function ModalWithForm({
   handleModalClose,
   onSubmit,
 }) {
-  function handleSubmit(e) {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-    const data = Object.fromEntries(formData.entries());
-    onSubmit(data);
-    handleModalClose();
-  }
   return (
     <div
       className={`modal ${activeModal === "add-garment" ? "modal_opened" : ""}`}
@@ -26,7 +19,7 @@ export default function ModalWithForm({
           type="button"
           className="modal__exit-btn"
         ></button>
-        <form onSubmit={handleSubmit} className="modal__form">
+        <form onSubmit={onSubmit} className="modal__form">
           {children}
           <button type="submit" className="modal__submit-btn">
             {buttonText}

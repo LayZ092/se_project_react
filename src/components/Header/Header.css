@@ -23,6 +23,11 @@
   line-height: 100%;
 }
 
+.header__profile-link {
+  text-decoration: none;
+  color: black;
+}
+
 .header__add-btn {
   margin: 0 20px 0 8px;
   background: transparent;

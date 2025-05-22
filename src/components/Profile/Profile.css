@@ -1,6 +1,8 @@
 .profile {
   display: flex;
   gap: 116px;
+  width: 100vh;
+  height: 100vw;
 }
 
 .footer {

@@ -26,6 +26,7 @@
   overflow: hidden;
   position: relative;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  min-height: 475px; /* Ensure consistent height */
 }
 
 .item-modal__exit-btn {
@@ -82,5 +83,23 @@
 
 .item-modal__footer {
   padding-top: 33px;
-  padding-left: 28px;
+  position: relative;
+}
+
+.item-modal__delete-btn {
+  position: absolute;
+  bottom: 20px;
+  right: 35px;
+  padding: 0;
+  display: flex;
+  height: 25px;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  color: #ff4d00;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  cursor: pointer;
+  white-space: nowrap;
 }

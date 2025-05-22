@@ -1,6 +1,11 @@
 import "./ItemModal.css";
 
-export default function ItemModal({ activeModal, card, handleModalClose }) {
+export default function ItemModal({
+  activeModal,
+  card,
+  handleModalClose,
+  onDeleteClick,
+}) {
   return (
     <div
       className={`item-modal ${
@@ -14,11 +19,24 @@ export default function ItemModal({ activeModal, card, handleModalClose }) {
           className="item-modal__exit-btn"
         />
         <div className="item-modal__image-container">
-          <img src={card.link} alt={card.name} className="item-modal__image" />
+          <img
+            src={card.imageUrl}
+            alt={card.name}
+            className="item-modal__image"
+          />
           <h2 className="item-modal__caption">{card.name}</h2>
         </div>
         <div className="item-modal__footer">
           <p className="item-modal__weather">Weather: {card.weather}</p>
+          <button
+            type="button"
+            className="item-modal__delete-btn"
+            onClick={() => {
+              onDeleteClick(card);
+            }}
+          >
+            Delete Item
+          </button>
         </div>
       </div>
     </div>

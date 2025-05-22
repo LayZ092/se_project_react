@@ -1,6 +1,6 @@
 import "./ItemCard.css";
 
-export default function ItemCard({ item, onCardClick }) {
+export default function ItemCard({ item, onCardClick, onDeleteClick }) {
   return (
     <li className="card">
       <h2 className="card__title">{item.name}</h2>
@@ -8,7 +8,7 @@ export default function ItemCard({ item, onCardClick }) {
         onClick={() => {
           onCardClick(item);
         }}
-        src={item.link}
+        src={item.imageUrl}
         alt={item.name}
         className="cards__image"
       />

@@ -101,6 +101,12 @@
       "name": "T-Shirt",
       "weather": "hot",
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/T-Shirt.png?etag=44ed1963c44ab19cd2f5011522c5fc09"
+    },
+    {
+      "name": "Jordans",
+      "weather": "hot",
+      "imageUrl": "https://i.pinimg.com/736x/35/3e/fc/353efc56bb6c7bf026f434a3e9c48601.jpg",
+      "_id": 17
     }
   ]
 }

@@ -9,7 +9,7 @@ export default function AddItemModal({
   onSubmit,
 }) {
   const [name, setName] = useState("");
-  const [imageURL, setImageURL] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
   const [weather, setWeather] = useState("");
 
   const handleNameChange = (e) => {
@@ -17,7 +17,7 @@ export default function AddItemModal({
   };
 
   const handleImageURLChange = (e) => {
-    setImageURL(e.target.value);
+    setImageUrl(e.target.value);
   };
 
   const handWeatherChange = (e) => {
@@ -26,9 +26,9 @@ export default function AddItemModal({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit({ name, imageURL, weather });
+    onSubmit({ name, imageUrl, weather });
     setName("");
-    setImageURL("");
+    setImageUrl("");
     setWeather("");
   };
 
@@ -63,7 +63,7 @@ export default function AddItemModal({
           placeholder="Image URL"
           required
           onChange={handleImageURLChange}
-          value={imageURL}
+          value={imageUrl}
         />
       </label>
       <fieldset className="modal__radio-btns">

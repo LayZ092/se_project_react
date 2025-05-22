@@ -103,10 +103,10 @@
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/T-Shirt.png?etag=44ed1963c44ab19cd2f5011522c5fc09"
     },
     {
-      "name": "Jordans",
+      "name": "Foams",
       "weather": "hot",
-      "imageUrl": "https://i.pinimg.com/736x/35/3e/fc/353efc56bb6c7bf026f434a3e9c48601.jpg",
-      "_id": 17
+      "imageUrl": "https://i.pinimg.com/736x/a9/37/11/a93711d02c91011af4349376a4fc675f.jpg",
+      "_id": 18
     }
   ]
 }

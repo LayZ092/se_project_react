@@ -46,21 +46,15 @@ function App() {
   };
 
   const handleAddGarment = ({ name, imageUrl, weather }) => {
-    console.log("Form Data:", { name, imageUrl, weather });
-
     const newItem = {
       name,
       weather,
       imageUrl,
     };
 
-    console.log("Making API call with:", newItem);
-
     addItem(newItem)
       .then((addedItem) => {
-        console.log("Response from API:", addedItem);
         setClothingItems([addedItem, ...clothingItems]);
-        console.log("Updated clothing items:", clothingItems);
         handleCloseModal();
       })
       .catch((error) => {
@@ -78,15 +72,9 @@ function App() {
   };
 
   const handleDeleteConfirm = () => {
-    console.log("Delete confirmation triggered");
-    console.log("Selected card:", selectedCard); // Check if we have the correct card
-
     if (selectedCard._id) {
-      console.log("Attempting to delete item with ID:", selectedCard._id);
-
       deleteItem(selectedCard._id)
         .then(() => {
-          console.log("Delete API call successful");
           setClothingItems((prevItems) =>
             prevItems.filter((item) => item._id !== selectedCard._id)
           );
@@ -99,7 +87,6 @@ function App() {
           console.error("Full error object:", JSON.stringify(error, null, 2));
         });
     } else {
-      console.log("No _id found in selectedCard");
     }
   };
 

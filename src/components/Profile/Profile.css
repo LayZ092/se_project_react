@@ -1,8 +1,11 @@
 .profile {
   display: flex;
   gap: 116px;
-  width: 100vh;
-  height: 100vw;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f3f3f3;
+  position: relative;
+  padding-bottom: 80px;
 }
 
 .footer {

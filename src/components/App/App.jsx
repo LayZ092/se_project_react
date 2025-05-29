@@ -80,7 +80,7 @@ function App() {
           );
           setIsDeleteModalOpen(false);
           setSelectedCard({});
-          setActiveModal("");
+          handleCloseModal();
         })
         .catch((error) => {
           console.error("Error deleting item:", error);
@@ -111,6 +111,22 @@ function App() {
       .catch(console.error);
   }, []);
 
+  useEffect(() => {
+    if (!activeModal) return;
+
+    const handleEscClose = (e) => {
+      if (e.key === "Escape") {
+        handleCloseModal();
+      }
+    };
+
+    document.addEventListener("keydown", handleEscClose);
+
+    return () => {
+      document.removeEventListener("keydown", handleEscClose);
+    };
+  }, [activeModal]);
+
   return (
     <CurrentTemperatureUnitContext.Provider
       value={{ currentTemperatureUnit, handleToggleSwitchChange }}
@@ -137,6 +153,7 @@ function App() {
                   onCardClick={handleCardClick}
                   clothingItems={clothingItems}
                   onDeleteClick={handleOpenDeleteModal}
+                  onAddItem={handleAddClick}
                 />
               }
             />
@@ -155,7 +172,7 @@ function App() {
         />
         <DeleteConfirmationModal
           activeModal={isDeleteModalOpen}
-          handleModalClose={() => setIsDeleteModalOpen(false)}
+          handleModalClose={handleCloseModal}
           onConfirm={handleDeleteConfirm}
           item={selectedCard}
         />

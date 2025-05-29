@@ -2,7 +2,11 @@ import "./ClothesSection.css";
 import { defaultClothingItems } from "../../utils/constants";
 import ItemCard from "../ItemCard/ItemCard";
 
-export default function ClothesSection({ onCardClick, clothingItems }) {
+export default function ClothesSection({
+  onCardClick,
+  clothingItems,
+  onAddItem,
+}) {
   return (
     <div className="clothes-section">
       <div className="clothes-section__controls">
@@ -10,6 +14,7 @@ export default function ClothesSection({ onCardClick, clothingItems }) {
         <button
           type="button"
           className="header__add-btn clothes-section__add-btn"
+          onClick={onAddItem}
         >
           + Add new
         </button>

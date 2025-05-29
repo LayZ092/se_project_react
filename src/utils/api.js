@@ -1,9 +1,17 @@
 const baseUrl = "http://localhost:3001";
 
-function getItems() {
-  return fetch(`${baseUrl}/items`).then((res) => {
-    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+function checkResponse(res) {
+  if (res.ok) {
+    return res.json();
+  }
+  return res.json().then((err) => {
+    const errorMsg = err.message || res.statusText || `Error: ${res.status}`;
+    return Promise.reject(`Error ${res.status}: ${errorMsg}`);
   });
+}
+
+function getItems() {
+  return fetch(`${baseUrl}/items`).then(checkResponse);
 }
 
 const addItem = async (item) => {
@@ -14,14 +22,14 @@ const addItem = async (item) => {
     },
     body: JSON.stringify(item),
   });
-  return response.json();
+  return checkResponse(response);
 };
 
 const deleteItem = async (itemId) => {
   const response = await fetch(`${baseUrl}/items/${itemId}`, {
     method: "DELETE",
   });
-  return response.json();
+  return checkResponse(response);
 };
 
-export { getItems, addItem, deleteItem };
+export { getItems, addItem, deleteItem, checkResponse };

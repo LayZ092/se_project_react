@@ -1,5 +1,5 @@
 import { weatherConditionMapping } from "./constants";
-import { checkResponse } from "./API.js";
+import { checkResponse } from "./api.js";
 
 export const getWeather = ({ latitude, longitude }, APIkey) => {
   return fetch(

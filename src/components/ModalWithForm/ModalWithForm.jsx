@@ -8,6 +8,12 @@ export default function ModalWithForm({
   handleModalClose,
   onSubmit,
 }) {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData.entries());
+    onSubmit(data);
+  };
   return (
     <div className={`modal ${isOpen ? "modal_opened" : ""}`}>
       <div className="modal__content">
@@ -17,7 +23,7 @@ export default function ModalWithForm({
           type="button"
           className="modal__exit-btn"
         ></button>
-        <form onSubmit={onSubmit} className="modal__form">
+        <form onSubmit={handleSubmit} className="modal__form">
           {children}
           <button type="submit" className="modal__submit-btn">
             {buttonText}

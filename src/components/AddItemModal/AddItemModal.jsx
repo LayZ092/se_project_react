@@ -1,7 +1,6 @@
 import "./AddItemModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm.jsx";
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
 import { useForm } from "../../hooks/useForm.js";
 
 export default function AddItemModal({

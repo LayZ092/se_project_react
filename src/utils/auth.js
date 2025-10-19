@@ -1,3 +1,5 @@
+import { checkResponse } from "./api";
+
 const BASE_URL = "http://localhost:3001";
 
 export const signup = async (name, avatar, email, password) => {
@@ -8,7 +10,7 @@ export const signup = async (name, avatar, email, password) => {
     },
     body: JSON.stringify({ name, avatar, email, password }),
   });
-  return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+  return checkResponse(res);
 };
 
 export const signin = async (email, password) => {
@@ -19,7 +21,20 @@ export const signin = async (email, password) => {
     },
     body: JSON.stringify({ email, password }),
   });
-  return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+  return checkResponse(res);
+};
+
+export const updateUser = async (name, avatar) => {
+  const token = localStorage.getItem("jwt");
+  const res = await fetch(`${BASE_URL}/users/me`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ name, avatar }),
+  });
+  return checkResponse(res);
 };
 
 export const validateToken = (token) => {
@@ -33,6 +48,6 @@ export const validateToken = (token) => {
     if (res.ok) {
       return res.json();
     }
-    return Promise.reject(`Error: ${res.status}`);
+    return checkResponse(res);
   });
 };

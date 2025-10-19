@@ -22,6 +22,7 @@ import {
 } from "../../utils/constants.js";
 import { getItems, addItem, deleteItem } from "../../utils/api.js";
 import { validateToken, signup, signin } from "../../utils/auth.js";
+import EditProfileModal from "../EditProfileModal/EditProfileModal.jsx";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -62,6 +63,10 @@ function App() {
     setActiveModal("signup");
   };
 
+  const handleEditProfileClick = () => {
+    setActiveModal("edit-profile");
+  };
+
   const handleAddGarment = ({ name, imageUrl, weather }) => {
     const newItem = {
       name,
@@ -69,7 +74,9 @@ function App() {
       imageUrl,
     };
 
-    addItem(newItem)
+    const token = localStorage.getItem("jwt");
+
+    addItem(newItem, token)
       .then((addedItem) => {
         setClothingItems([addedItem, ...clothingItems]);
         handleCloseModal();
@@ -89,8 +96,10 @@ function App() {
   };
 
   const handleDeleteConfirm = () => {
+    const token = localStorage.getItem("jwt");
+
     if (selectedCard._id) {
-      deleteItem(selectedCard._id)
+      deleteItem(selectedCard._id, token)
         .then(() => {
           setClothingItems((prevItems) =>
             prevItems.filter((item) => item._id !== selectedCard._id)
@@ -140,6 +149,10 @@ function App() {
     } catch (error) {
       console.error("Signin failed:", error);
     }
+  };
+
+  const handleUpdateUser = (updatedUserData) => {
+    setCurrentUser(updatedUserData);
   };
 
   useEffect(() => {
@@ -219,10 +232,12 @@ function App() {
                 path="/profile"
                 element={
                   <Profile
-                    onCardClick={handleCardClick}
+                    activeModal={activeModal}
                     clothingItems={clothingItems}
-                    onDeleteClick={handleOpenDeleteModal}
                     onAddItem={handleAddClick}
+                    onCardClick={handleCardClick}
+                    onDeleteClick={handleOpenDeleteModal}
+                    handleEditProfileClick={handleEditProfileClick}
                   />
                 }
               />
@@ -238,6 +253,7 @@ function App() {
             card={selectedCard}
             handleModalClose={handleCloseModal}
             onDeleteClick={handleOpenDeleteModal}
+            isLoggedIn={isLoggedIn}
           />
           <DeleteConfirmationModal
             activeModal={isDeleteModalOpen}
@@ -254,6 +270,11 @@ function App() {
             activeModal={activeModal}
             handleModalClose={handleCloseModal}
             onSubmit={handleSignIn}
+          />
+          <EditProfileModal
+            activeModal={activeModal}
+            handleModalClose={handleCloseModal}
+            onUpdateUser={handleUpdateUser}
           />
           <Footer />
         </div>

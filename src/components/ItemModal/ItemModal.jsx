@@ -5,6 +5,7 @@ export default function ItemModal({
   card,
   handleModalClose,
   onDeleteClick,
+  isLoggedIn,
 }) {
   return (
     <div
@@ -28,15 +29,17 @@ export default function ItemModal({
         </div>
         <div className="item-modal__footer">
           <p className="item-modal__weather">Weather: {card.weather}</p>
-          <button
-            type="button"
-            className="item-modal__delete-btn"
-            onClick={() => {
-              onDeleteClick(card);
-            }}
-          >
-            Delete Item
-          </button>
+          {isLoggedIn && (
+            <button
+              className="item-modal__delete-btn"
+              type="button"
+              onClick={() => {
+                onDeleteClick(card);
+              }}
+            >
+              Delete item
+            </button>
+          )}
         </div>
       </div>
     </div>

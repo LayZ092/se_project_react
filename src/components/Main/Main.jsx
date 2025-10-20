@@ -11,6 +11,8 @@ export default function Main({
   handleCardClick,
   clothingItems,
   onDeleteClick,
+  onCardLike,
+  isLoggedIn,
 }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
 
@@ -35,6 +37,8 @@ export default function Main({
                   key={item._id}
                   onCardClick={handleCardClick}
                   onDeleteClick={onDeleteClick}
+                  onCardLike={onCardLike}
+                  isLoggedIn={isLoggedIn}
                 />
               );
             })}

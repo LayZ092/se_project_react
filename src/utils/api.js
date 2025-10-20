@@ -36,4 +36,33 @@ const deleteItem = async (itemId, token) => {
   return checkResponse(res);
 };
 
-export { getItems, addItem, deleteItem, checkResponse };
+const addCardLike = async (id, token) => {
+  const res = await fetch(`${baseUrl}/items/${id}/likes`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  });
+  return checkResponse(res);
+};
+
+const removeCardLike = async (id, token) => {
+  const res = await fetch(`${baseUrl}/items/${id}/likes`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  });
+  return checkResponse(res);
+};
+
+export {
+  getItems,
+  addItem,
+  deleteItem,
+  checkResponse,
+  addCardLike,
+  removeCardLike,
+};

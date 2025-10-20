@@ -13,6 +13,7 @@ import RegisterModal from "../RegisterModal/RegisterModal.jsx";
 import LoginModal from "../LoginModal/LoginModal.jsx";
 import DeleteConfirmationModal from "../DeleteConfimationModal/DeleteConfirmationModal.jsx";
 import CurrentUserContext from "../../contexts/CurrentUserContext.jsx";
+import EditProfileModal from "../EditProfileModal/EditProfileModal.jsx";
 
 import { getWeather, filterWeatherData } from "../../utils/weatherApi.js";
 import {
@@ -22,7 +23,9 @@ import {
 } from "../../utils/constants.js";
 import { getItems, addItem, deleteItem } from "../../utils/api.js";
 import { validateToken, signup, signin } from "../../utils/auth.js";
-import EditProfileModal from "../EditProfileModal/EditProfileModal.jsx";
+import { ProtectedRoute } from "../ProtectedRoute/ProtectedRoute.jsx";
+
+import * as api from "../../utils/api.js";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -143,7 +146,10 @@ function App() {
       const result = await signin(data.email, data.password);
 
       localStorage.setItem("jwt", result.token);
-      setCurrentUser(result.user);
+
+      const userData = await validateToken(result.token);
+
+      setCurrentUser(userData);
       setIsLoggedIn(true);
       handleCloseModal();
     } catch (error) {
@@ -171,6 +177,27 @@ function App() {
       })
       .catch(console.error);
   }, []);
+
+  const handleCardLike = ({ id, isLiked }) => {
+    const token = localStorage.getItem("jwt");
+    !isLiked
+      ? api
+          .addCardLike(id, token)
+          .then((updatedCard) => {
+            setClothingItems((cards) =>
+              cards.map((item) => (item._id === id ? updatedCard : item))
+            );
+          })
+          .catch((err) => console.log(err))
+      : api
+          .removeCardLike(id, token)
+          .then((updatedCard) => {
+            setClothingItems((cards) =>
+              cards.map((item) => (item._id === id ? updatedCard : item))
+            );
+          })
+          .catch((err) => console.log(err));
+  };
 
   useEffect(() => {
     if (!activeModal) return;
@@ -225,20 +252,26 @@ function App() {
                     handleCardClick={handleCardClick}
                     clothingItems={clothingItems}
                     onDeleteClick={handleOpenDeleteModal}
+                    onCardLike={handleCardLike}
+                    isLoggedIn={isLoggedIn}
                   />
                 }
               />
               <Route
                 path="/profile"
                 element={
-                  <Profile
-                    activeModal={activeModal}
-                    clothingItems={clothingItems}
-                    onAddItem={handleAddClick}
-                    onCardClick={handleCardClick}
-                    onDeleteClick={handleOpenDeleteModal}
-                    handleEditProfileClick={handleEditProfileClick}
-                  />
+                  <ProtectedRoute isLoggedIn={isLoggedIn}>
+                    <Profile
+                      activeModal={activeModal}
+                      clothingItems={clothingItems}
+                      onAddItem={handleAddClick}
+                      onCardClick={handleCardClick}
+                      onDeleteClick={handleOpenDeleteModal}
+                      handleEditProfileClick={handleEditProfileClick}
+                      onCardLike={handleCardLike}
+                      isLoggedIn={isLoggedIn}
+                    />
+                  </ProtectedRoute>
                 }
               />
             </Routes>

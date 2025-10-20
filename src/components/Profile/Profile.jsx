@@ -11,6 +11,8 @@ export default function Profile({
   handleEditProfileClick,
   activeModal,
   handleModalClose,
+  onCardLike,
+  isLoggedIn,
 }) {
   return (
     <div className="profile">
@@ -22,6 +24,8 @@ export default function Profile({
           onCardClick={onCardClick}
           clothingItems={clothingItems}
           onAddItem={onAddItem}
+          onCardLike={onCardLike}
+          isLoggedIn={isLoggedIn}
         />
         <EditProfileModal
           activeModal={activeModal}

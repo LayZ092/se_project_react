@@ -13,11 +13,15 @@ export default function Profile({
   handleModalClose,
   onCardLike,
   isLoggedIn,
+  handleSignOut,
 }) {
   return (
     <div className="profile">
       <section className="profile__sidebar">
-        <SideBar handleEditProfileClick={handleEditProfileClick} />
+        <SideBar
+          handleEditProfileClick={handleEditProfileClick}
+          handleSignOut={handleSignOut}
+        />
       </section>
       <section className="profile__clothing-items">
         <ClothesSection

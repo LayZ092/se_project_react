@@ -18,10 +18,13 @@ export default function EditProfileModal({
 
   const currentUser = useContext(CurrentUserContext);
 
-  const handleSubmit = async (userData) => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
-      const updatedUser = await updateUser(userData.name, userData.avatarUrl);
+      console.log("Submitting data:", values); // Use 'values' instead of 'userData'
+      const updatedUser = await updateUser(values.name, values.avatarUrl);
       onUpdateUser(updatedUser);
+      console.log("API response:", updatedUser);
       handleModalClose();
     } catch (error) {
       console.error("Profile update failed:", error);
@@ -39,8 +42,8 @@ export default function EditProfileModal({
 
   return (
     <ModalWithForm
-      title="Edit Profile"
-      buttonText="Change profile data"
+      title="Change profile data"
+      buttonText="Save changes"
       isOpen={activeModal === "edit-profile"}
       handleModalClose={handleModalClose}
       onSubmit={handleSubmit}

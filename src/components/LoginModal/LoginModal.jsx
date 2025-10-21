@@ -6,6 +6,7 @@ export default function LoginModal({
   activeModal,
   handleModalClose,
   onSubmit,
+  onSwitchToRegister,
 }) {
   const { values, handleChange, setValues } = useForm({
     email: "",
@@ -27,10 +28,12 @@ export default function LoginModal({
   return (
     <ModalWithForm
       title="Login"
-      buttonText="Login"
+      buttonText="Log In"
       isOpen={activeModal === "signin"}
       handleModalClose={handleModalClose}
       onSubmit={handleSubmit}
+      onSwitch={onSwitchToRegister}
+      switchText="or Sign Up"
     >
       <label htmlFor="email" className="modal__label">
         Email

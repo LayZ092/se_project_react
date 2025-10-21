@@ -1,6 +1,7 @@
 import "./ItemCard.css";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import heartIcon from "../../assets/heart.svg";
+import heartLiked from "../../assets/heart-liked.png";
 
 import { useContext } from "react";
 
@@ -22,7 +23,20 @@ export default function ItemCard({
 
   return (
     <li className="card">
-      <h2 className="card__title">{item.name}</h2>
+      <div className="card__header">
+        <h2 className="card__title">{item.name}</h2>
+        {currentUser && isLoggedIn && (
+          <button
+            className={`card__like-btn ${
+              isLiked ? "card__like-btn-isliked" : ""
+            }`}
+            onClick={handleLike}
+            type="button"
+          >
+            <img src={isLiked ? heartLiked : heartIcon} alt="heart" />
+          </button>
+        )}
+      </div>
       <img
         onClick={() => {
           onCardClick(item);
@@ -31,11 +45,6 @@ export default function ItemCard({
         alt={item.name}
         className="cards__image"
       />
-      {currentUser && isLoggedIn && (
-        <button className="card__like-btn" onClick={handleLike} type="button">
-          <img src={heartIcon} alt="heart" />
-        </button>
-      )}
     </li>
   );
 }

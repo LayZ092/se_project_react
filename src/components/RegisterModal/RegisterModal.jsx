@@ -6,6 +6,7 @@ export default function RegisterModal({
   activeModal,
   handleModalClose,
   onSubmit,
+  onSwitchToLogin,
 }) {
   const { values, handleChange, setValues } = useForm({
     name: "",
@@ -30,11 +31,13 @@ export default function RegisterModal({
 
   return (
     <ModalWithForm
-      title="Register"
-      buttonText="Register"
+      title="Sign Up"
+      buttonText="Sign Up"
       isOpen={activeModal === "signup"}
       handleModalClose={handleModalClose}
       onSubmit={handleSubmit}
+      onSwitch={onSwitchToLogin}
+      switchText="or Log In"
     >
       <label htmlFor="name" className="modal__label">
         Name

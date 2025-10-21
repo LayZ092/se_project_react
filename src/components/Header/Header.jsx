@@ -11,7 +11,7 @@ export default function Header({
   handleAddClick,
   weatherData,
   handleSignInClick,
-  handleSignUpCLick,
+  handleSignUpClick,
   isLoggedIn,
 }) {
   const currentDate = new Date().toLocaleString("default", {
@@ -56,11 +56,11 @@ export default function Header({
       ) : (
         // Non-logged in user sees this
         <div className="header__auth-buttons">
-          <button onClick={handleSignInClick} className="header__signin-btn">
-            Signin
-          </button>
-          <button onClick={handleSignUpCLick} className="header__signup-btn">
+          <button onClick={handleSignUpClick} className="header__signup-btn">
             Signup
+          </button>
+          <button onClick={handleSignInClick} className="header__signin-btn">
+            Login
           </button>
         </div>
       )}

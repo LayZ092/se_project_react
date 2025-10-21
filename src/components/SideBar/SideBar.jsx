@@ -4,17 +4,19 @@ import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 import { useContext } from "react";
 
-export default function SideBar({ handleEditProfileClick }) {
+export default function SideBar({ handleEditProfileClick, handleSignOut }) {
   const currentUser = useContext(CurrentUserContext);
 
   return (
     <div className="sidebar">
-      <img
-        className="sidebar__avatar"
-        src={currentUser.avatar}
-        alt="Default avatar"
-      />
-      <p className="sidebar__username">{currentUser.name}</p>
+      <div className="sidebar__profile-header">
+        <img
+          className="sidebar__avatar"
+          src={currentUser.avatar}
+          alt="Default avatar"
+        />
+        <p className="sidebar__username">{currentUser.name}</p>
+      </div>
       <div className="sidebar__btn-group">
         <button
           className="sidebar__edit-profile_btn"
@@ -22,7 +24,9 @@ export default function SideBar({ handleEditProfileClick }) {
         >
           Change profile data
         </button>
-        <button className="sidebar__logout-btn">Logout</button>
+        <button className="sidebar__logout-btn" onClick={handleSignOut}>
+          Logout
+        </button>
       </div>
     </div>
   );

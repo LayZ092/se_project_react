@@ -70,6 +70,14 @@ function App() {
     setActiveModal("edit-profile");
   };
 
+  const handleSwitchToRegister = () => {
+    setActiveModal("signup");
+  };
+
+  const handleSwitchToLogin = () => {
+    setActiveModal("signin");
+  };
+
   const handleAddGarment = ({ name, imageUrl, weather }) => {
     const newItem = {
       name,
@@ -157,7 +165,14 @@ function App() {
     }
   };
 
+  const handleSignOut = () => {
+    localStorage.removeItem("jwt");
+    setIsLoggedIn(false);
+    setCurrentUser({});
+  };
+
   const handleUpdateUser = (updatedUserData) => {
+    console.log("Updating user with:", updatedUserData);
     setCurrentUser(updatedUserData);
   };
 
@@ -270,6 +285,7 @@ function App() {
                       handleEditProfileClick={handleEditProfileClick}
                       onCardLike={handleCardLike}
                       isLoggedIn={isLoggedIn}
+                      handleSignOut={handleSignOut}
                     />
                   </ProtectedRoute>
                 }
@@ -298,11 +314,13 @@ function App() {
             activeModal={activeModal}
             handleModalClose={handleCloseModal}
             onSubmit={handleRegistration}
+            onSwitchToLogin={handleSwitchToLogin}
           />
           <LoginModal
             activeModal={activeModal}
             handleModalClose={handleCloseModal}
             onSubmit={handleSignIn}
+            onSwitchToRegister={handleSwitchToRegister}
           />
           <EditProfileModal
             activeModal={activeModal}

@@ -50,3 +50,19 @@
 .header__toggle-switch {
   margin-left: auto;
 }
+
+.header__auth-buttons {
+  display: flex;
+  margin-left: 22px;
+}
+
+.header__signin-btn,
+.header__signup-btn {
+  padding: 8px 16px;
+  font-size: 16px;
+  font-weight: 700;
+  color: black;
+  background-color: #f3f3f3;
+  border: none;
+  cursor: pointer;
+}

@@ -1,6 +1,6 @@
 import { checkResponse } from "./api";
 
-const BASE_URL = "http://localhost:3001";
+import { BASE_URL } from "./constants.js";
 
 export const signup = async (name, avatar, email, password) => {
   const res = await fetch(`${BASE_URL}/signup`, {

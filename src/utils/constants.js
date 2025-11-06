@@ -122,3 +122,10 @@ export const locationData = {
 };
 
 export const APIkey = "d22a0a1f18e45cc2b3f69f90e9685df9";
+
+export const BASE_URL =
+  process.env.NODE_ENV === "production"
+    ? "https://api.fitcheck-wtwr.dev.home.kg"
+    : "http://localhost:3001";
+
+console.log("NODE_ENV:", process.env.NODE_ENV, "BASE_URL:", BASE_URL);

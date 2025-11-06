@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:3001";
+import { BASE_URL } from "./constants.js";
 
 function checkResponse(res) {
   if (res.ok) {
@@ -11,11 +11,11 @@ function checkResponse(res) {
 }
 
 function getItems() {
-  return fetch(`${baseUrl}/items`).then(checkResponse);
+  return fetch(`${BASE_URL}/items`).then(checkResponse);
 }
 
 const addItem = async (item, token) => {
-  const res = await fetch(`${baseUrl}/items`, {
+  const res = await fetch(`${BASE_URL}/items`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -27,7 +27,7 @@ const addItem = async (item, token) => {
 };
 
 const deleteItem = async (itemId, token) => {
-  const res = await fetch(`${baseUrl}/items/${itemId}`, {
+  const res = await fetch(`${BASE_URL}/items/${itemId}`, {
     method: "DELETE",
     headers: {
       authorization: `Bearer ${token}`,
@@ -37,7 +37,7 @@ const deleteItem = async (itemId, token) => {
 };
 
 const addCardLike = async (id, token) => {
-  const res = await fetch(`${baseUrl}/items/${id}/likes`, {
+  const res = await fetch(`${BASE_URL}/items/${id}/likes`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -48,7 +48,7 @@ const addCardLike = async (id, token) => {
 };
 
 const removeCardLike = async (id, token) => {
-  const res = await fetch(`${baseUrl}/items/${id}/likes`, {
+  const res = await fetch(`${BASE_URL}/items/${id}/likes`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",

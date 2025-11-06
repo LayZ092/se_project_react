@@ -172,7 +172,6 @@ function App() {
   };
 
   const handleUpdateUser = (updatedUserData) => {
-    console.log("Updating user with:", updatedUserData);
     setCurrentUser(updatedUserData);
   };
 

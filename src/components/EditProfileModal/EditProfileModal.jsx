@@ -1,4 +1,4 @@
-import "EditProfileModal.css";
+import "./EditProfileModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm.jsx";
 import CurrentUserContext from "../../contexts/CurrentUserContext.jsx";
 

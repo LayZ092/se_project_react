@@ -1,4 +1,4 @@
-import "RegisterModal.css";
+import "./RegisterModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm.jsx";
 
 import { useEffect } from "react";

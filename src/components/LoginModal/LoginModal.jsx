@@ -1,4 +1,4 @@
-import "LoginModal.css";
+import "./LoginModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm.jsx";
 
 import { useEffect } from "react";

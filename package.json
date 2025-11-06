@@ -3,11 +3,13 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": " https://fitcheck-wtwr.dev.home.kg",
   "scripts": {
     "dev": "vite --open",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "npm run deploy && scp -r ./dist/* jamothassan675@34.75.211.175:/home/jamothassan675/frontend"
   },
   "dependencies": {
     "react": "^18.3.1",

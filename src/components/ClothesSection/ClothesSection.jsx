@@ -1,5 +1,4 @@
 import "./ClothesSection.css";
-import { defaultClothingItems } from "../../utils/constants";
 import { useContext } from "react";
 
 import ItemCard from "../ItemCard/ItemCard";

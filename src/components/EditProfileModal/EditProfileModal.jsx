@@ -22,7 +22,6 @@ export default function EditProfileModal({
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      console.log("Submitting data:", values); // Use 'values' instead of 'userData'
       const updatedUser = await updateUser(values.name, values.avatarUrl);
       onUpdateUser(updatedUser);
       console.log("API response:", updatedUser);
